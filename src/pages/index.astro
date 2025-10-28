@@ -1,0 +1,369 @@
+---
+
+import Layout from "../layouts/Layout.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import ContactForm from "../components/ContactForm.astro";
+import { Image } from "astro:assets";
+import miFotoDePerfil from '../assets/fotoportafoliopg.jpg';
+import logoCsharp from '../assets/csharp-original.svg';
+import logoJs from '../assets/javascript-original.svg';
+import logoNode from '../assets/nodejs-original-wordmark.svg';
+import logoNET from '../assets/dotnetcore-original.svg';
+import expressLogo from '../assets/express-original.svg';
+import logoHTML from '../assets/html5-original.svg';
+import logoCSS from '../assets/css3-original.svg';
+import sassLogo from '../assets/sass-original.svg';
+import logoBootstrap from '../assets/bootstrap-original.svg';
+import TechLogo from "../components/TechLogo.astro";
+import tailwindLogo from '../assets/tailwindcss-original.svg';
+import mySqlLogo from '../assets/mysql-original.svg';
+import mongodbLogo from '../assets/mongodb-original.svg';
+import sqlServerLogo from '../assets/microsoftsqlserver-original.svg';
+import dockerLogo from '../assets/docker-original.svg';
+import githubLogo from '../assets/github-original.svg';
+import TestimonialCard from "../components/TestimonialCard.astro"; 
+import ServiceCard from "../components/ServiceCard.astro";
+import logoPHP from '../assets/php-original.svg';
+import logoJava from '../assets/java-original.svg';
+import logoSwagger from '../assets/swagger-original.svg';
+import logoPostman from '../assets/postman-original.svg';
+import logoOauth from '../assets/oauth-original.svg';
+import logoGit from '../assets/git-original.svg';
+import logoAstro from '../assets/astro-original.svg';
+---
+
+<Layout>
+<!-- HERO SECTION -->
+<section id="inicio" class="min-h-screen flex flex-col justify-center items-center text-center space-y-6 pt-20 pb-10">
+  <h2 class="text-6xl md:text-7xl font-extrabold animate-fade-in">
+    Hola, soy <span class="text-blue-600">Juan Pablo Medina</span>
+  </h2>
+  <p class="max-w-xl text-xl text-gray-700 dark:text-gray-300 animate-fade-in-delay">
+    Analista Funcional | <strong class="text-blue-600 dark:text-blue-400">Backend Developer</strong> | Apasionado por el análisis funcional, el desarrollo y la documentación de software.
+  </p>
+
+  <div class="flex flex-col items-center gap-4 mt-8">
+    <div class="flex flex-wrap justify-center gap-4 md:gap-6">
+      <a
+        href="#proyectos"
+        class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-semibold shadow-lg hover:shadow-xl transform hover:scale-105"
+      >
+        Ver Proyectos
+      </a>
+      <a
+        href="https://drive.google.com/file/d/17rzVsoG1L8xxhLAyA6IDWjZfvgR441eF/view?usp=sharing"
+        class="px-6 py-3 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-600 hover:text-white transition font-semibold shadow-md hover:shadow-lg transform hover:scale-105"
+      >
+        Ver Curriculum Vitae
+      </a>
+    </div>
+    
+    <div class="flex justify-center gap-4">
+      <a
+        href="https://github.com/juanpablomd"
+        target="_blank"
+        aria-label="GitHub"
+        class="p-3 text-2xl text-gray-800 dark:text-white rounded-full transition hover:bg-gray-200 dark:hover:bg-gray-700"
+      >
+        <i class="fab fa-github"></i>
+      </a>
+      <a
+        href="https://www.linkedin.com/in/juanpmsistemas/"
+        target="_blank"
+        aria-label="LinkedIn"
+        class="p-3 text-2xl text-blue-600 dark:text-blue-400 rounded-full transition hover:bg-blue-100 dark:hover:bg-gray-700"
+      >
+        <i class="fab fa-linkedin"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE MÍ -->
+<section id="sobre-mi" class="py-24 text-center">
+  <h2 class="text-3xl font-bold mb-12">Sobre mí</h2>
+
+  <div class="flex flex-col items-center justify-center lg:flex-row lg:gap-12 max-w-5xl mx-auto mb-16 px-4">
+    <p class="text-lg text-gray-700 dark:text-gray-300 mb-8 lg:mb-0 lg:w-2/3 lg:text-left leading-relaxed">
+      Soy <strong>Analista de Sistemas y Desarrollador Backend</strong>, recién egresado del 
+      <a 
+        href="https://www.ies21.edu.ar/" 
+        class="text-blue-600 dark:text-blue-400 font-semibold underline hover:text-blue-500 dark:hover:text-blue-300 transition"
+        target="_blank"
+      >
+        Colegio Universitario IES21
+        <i class="px-1 fa-solid fa-arrow-up-right-from-square text-sm"></i>
+      </a>, con un fuerte enfoque en <strong>resolver problemas y crear soluciones escalables</strong>.  
+      
+      Trabajo principalmente con <strong>C# .NET, Node.js y SQL Server</strong>, aplicando buenas prácticas de arquitectura y priorizando sistemas eficientes y seguros.  
+      
+      Mi perfil combina <strong>análisis funcional, documentación y desarrollo full-stack</strong>, lo que me permite transformar requerimientos complejos en soluciones completas y confiables.  
+      <br><br>
+      Estoy siempre en búsqueda de <strong>nuevas tecnologías y desafíos</strong>, con la motivación de aprender y contribuir con proyectos que generen impacto real.
+    </p>
+
+    <div class="lg:w-1/3 flex justify-center hover:scale-[1.03] transition duration-300">
+      <Image
+        src={miFotoDePerfil}
+        alt="Foto de perfil de Juan Pablo Medina"
+        class="w-68 h-68 object-cover rounded-full shadow-xl border-4 border-blue-600/50"
+      />
+    </div>
+  </div>
+
+  <!-- STACK DE TECNOLOGÍAS REORGANIZADO -->
+  <div class="max-w-6xl mx-auto px-4 mt-16">
+    <h3 class="text-2xl font-semibold mb-12">Stack de Tecnologías</h3>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      
+      <!-- Lenguajes de Programación -->
+      <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 p-6">
+        <div class="flex items-center justify-center gap-2 mb-6">
+          <i class="fas fa-code text-2xl text-blue-600 dark:text-blue-400"></i>
+          <h4 class="text-xl font-bold text-gray-900 dark:text-white">Lenguajes</h4>
+        </div>
+        <div class="grid grid-cols-3 gap-6 justify-items-center">
+          <TechLogo src={logoCsharp} alt="Logo C#" name="C#" />
+          <TechLogo src={logoJava} alt="Logo Java" name="Java" />
+          <TechLogo src={logoPHP} alt="Logo PHP" name="PHP" />
+          <TechLogo src={logoJs} alt="Logo JavaScript" name="JavaScript" />
+          <TechLogo src={logoHTML} alt="Logo HTML" name="HTML5" />
+          <TechLogo src={logoCSS} alt="Logo CSS" name="CSS3" />
+        </div>
+      </div>
+
+      <!-- Frameworks & Librerías -->
+      <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 p-6">
+        <div class="flex items-center justify-center gap-2 mb-6">
+          <i class="fas fa-layer-group text-2xl text-purple-600 dark:text-purple-400"></i>
+          <h4 class="text-xl font-bold text-gray-900 dark:text-white">Frameworks</h4>
+        </div>
+        <div class="grid grid-cols-3 gap-6 justify-items-center">
+          <TechLogo src={logoNET} alt="Logo .NET" name=".NET" />
+          <TechLogo src={logoNode} alt="Logo Node.js" name="Node.js" />
+          <TechLogo src={expressLogo} alt="Logo Express" name="Express" />
+          <TechLogo src={logoAstro} alt="Logo Astro" name="Astro" />
+          <TechLogo src={tailwindLogo} alt="Logo Tailwind" name="Tailwind" />
+          <TechLogo src={logoBootstrap} alt="Logo Bootstrap" name="Bootstrap" />
+          <TechLogo src={sassLogo} alt="Logo SASS" name="Sass" />
+        </div>
+      </div>
+
+      <!-- Bases de Datos -->
+      <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 p-6">
+        <div class="flex items-center justify-center gap-2 mb-6">
+          <i class="fas fa-database text-2xl text-green-600 dark:text-green-400"></i>
+          <h4 class="text-xl font-bold text-gray-900 dark:text-white">Bases de Datos</h4>
+        </div>
+        <div class="grid grid-cols-3 gap-6 justify-items-center">
+          <TechLogo src={sqlServerLogo} alt="Logo SQL Server" name="SQL Server" />
+          <TechLogo src={mySqlLogo} alt="Logo MySQL" name="MySQL" />
+          <TechLogo src={mongodbLogo} alt="Logo MongoDB" name="MongoDB" />
+        </div>
+      </div>
+
+      <!-- Herramientas & DevOps (ocupa 2 columnas en desktop) -->
+      <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 p-6 md:col-span-2 lg:col-span-3">
+        <div class="flex items-center justify-center gap-2 mb-6">
+          <i class="fas fa-tools text-2xl text-orange-600 dark:text-orange-400"></i>
+          <h4 class="text-xl font-bold text-gray-900 dark:text-white">Herramientas & DevOps</h4>
+        </div>
+        <div class="grid grid-cols-3 md:grid-cols-6 gap-6 justify-items-center max-w-4xl mx-auto">
+          <TechLogo src={logoGit} alt="Logo Git" name="Git" />
+          <TechLogo src={githubLogo} alt="Logo Github" name="Github" />
+          <TechLogo src={dockerLogo} alt="Logo Docker" name="Docker" />
+          <TechLogo src={logoSwagger} alt="Logo Swagger" name="Swagger" />
+          <TechLogo src={logoPostman} alt="Logo Postman" name="Postman" />
+          <TechLogo src={logoOauth} alt="Logo OAuth" name="OAuth" />
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROYECTOS -->
+<section id="proyectos" class="py-24">
+  <h2 class="text-3xl font-bold mb-12 text-center">Proyectos Destacados y Calidad de Ingeniería</h2>
+  
+  <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto px-4">
+    <ProjectCard
+      title="Sistema web - Piccolo Burgers"
+      description="Sistema web completo para la gestión de pedidos en un restaurante de hamburguesas. Incluye panel de administración, panel de delivery, gestión de menú, y seguimiento de pedidos en tiempo real."
+      tech="PHP, JavaScript, MySQL, Bootstrap"
+      link="https://github.com/juanpablomd/piccoloBurgers"
+      docLink="https://drive.google.com/file/d/1pKDkG3EHL0GedNQHKNSkxTmKzv97iLQ5/view?usp=sharing"
+      quality={["RBAC (Roles)", "AJAX", "Reportes PDF/Excel", "Docker"]}
+    />
+    
+    <ProjectCard
+      title="Sistema de gestión - Panaderia"
+      description="Aplicación de escritorio robusta desarrollada en Java Swing para la gestión integral de un negocio. Implementa arquitectura DAO, conexión a MySQL, control de stock por código de barras, auditoría de acciones, sistema de roles y generación de tickets en formato PDF."
+      tech="Java, MySQL, ApacheNetbeans, JDBC"
+      link="https://github.com/juanpablomd/PanaderiaSistema"
+      docLink="https://drive.google.com/file/d/1re45j5H-l5FAUapWD-Hsj6M94mKBXv-Z/view?usp=sharing"
+      quality={["Patrón DAO", "CRUD Completo", "Seguridad y Roles", "Auditoría de Acciones", "Reportes PDF", "Integración con APIs"]}
+    />
+
+    <ProjectCard
+      title="Plataforma E-commerce: Macchiatto Coffe"
+      description="Aplicación E-commerce full-stack moderna y segura, dividida en arquitectura multi-repositorio (Frontend/Backend). Demuestra experiencia en seguridad web, gestión de tokens JWT, autenticación de terceros (Google OAuth) y lógica de negocio transaccional con sistema de puntos de lealtad."
+      tech="Node.js, Express, MongoDB, Vanilla JS, Tailwind CSS, JWT, Google OAuth"
+      link="https://github.com/juanpablomd/macchiatto-frontend" 
+      docLink="https://github.com/juanpablomd/macchiatto-backend" 
+      isMultiRepo={true} 
+      quality={[
+        "Arquitectura Multi-Repo (Front/Back)", 
+        "Autenticación JWT y Google OAuth", 
+        "Seguridad con .env y .gitignore", 
+        "Control Transaccional (Puntos/Ventas)", 
+        "Diseño 100% Responsivo (Tailwind)",
+        "Mitigación XSS (sessionStorage)"
+      ]}
+    />
+    <ProjectCard
+  title="Sistema de turnos - Clínica San Gabriel"
+  description="Aplicación en desarrollo con C# .NET para la gestión integral de una clínica médica. Implementará manejo de turnos, pacientes, médicos y reportes, siguiendo buenas prácticas de diseño y escalabilidad."
+  tech="C#, .NET, SQL Server, JWT, React, Azure"
+  link="#"  
+  docLink="#" 
+  quality={[
+    "Clean Architecture",
+    "Multirepositorio",
+    "Control de pacientes y médicos",
+    "Generación de reportes",
+    "Seguridad y roles"
+  ]}
+  upcoming={true}
+/>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios" class="py-24 text-center bg-gray-50 dark:bg-gray-900">
+  <h2 class="text-3xl font-bold mb-12">Mis servicios</h2>
+  <p class="max-w-2xl mx-auto text-gray-700 dark:text-gray-400 mb-12 leading-relaxed">
+    Combino mi formación en análisis funcional con experiencia en desarrollo backend y frontend 
+    para ofrecer soluciones completas, seguras y escalables.
+  </p>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 justify-items-center max-w-6xl mx-auto px-4">
+    <ServiceCard 
+      icon="/icons/web.svg" 
+      title="Desarrollo Web" 
+      description="Diseño y desarrollo de sitios web modernos, adaptables y orientados a ofrecer una experiencia de usuario fluida y atractiva."
+    />
+    <ServiceCard 
+      icon="/icons/backend.svg" 
+      title="Desarrollo Backend" 
+      description="Implementación de APIs seguras y eficientes con C# .NET y Node.js, aplicando arquitectura limpia y buenas prácticas."
+    />
+    <ServiceCard 
+      icon="/icons/desktop.svg" 
+      title="Aplicaciones de Escritorio" 
+      description="Sistemas de escritorio robustos y escalables, con conexión a bases de datos y control de usuarios."
+    />
+    <ServiceCard 
+      icon="/icons/sql.svg" 
+      title="Gestión de Bases de Datos" 
+      description="Diseño, optimización y mantenimiento de bases SQL y NoSQL. Copias de seguridad, procedimientos y replicación."
+    />
+    <ServiceCard 
+      icon="/icons/analisis.sv.svg" 
+      title="Análisis Funcional" 
+      description="Relevamiento de requerimientos, modelado UML y documentación técnica clara para garantizar trazabilidad."
+    />
+    <ServiceCard 
+      icon="/icons/documentacion.svg" 
+      title="Documentación Técnica" 
+      description="Elaboración de manuales técnicos, diagramas de arquitectura y documentación de APIs."
+    />
+    <ServiceCard 
+      icon="/icons/devops.svg" 
+      title="Mantenimiento" 
+      description="Automatización, integración continua y despliegues controlados con Docker y GitHub"
+    />
+    <ServiceCard 
+      icon="/icons/ux.svg" 
+      title="Optimización UX/UI" 
+      description="Interfaces limpias, usabilidad intuitiva y diseño centrado en el usuario con Tailwind y Bootstrap."
+    />
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section id="testimonios" class="py-24 text-center">
+  <h2 class="text-3xl font-bold mb-12">Testimonios sobre mí</h2>
+  
+  <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto px-4">
+    <TestimonialCard
+      quote="Próximamente..."
+      name=""
+      title=""
+      linkedinLink=""
+    />
+    <TestimonialCard
+      quote="Próximamente..."
+      name=""
+      title=""
+      linkedinLink=""
+    />
+    <TestimonialCard
+      quote="Próximamente..."
+      name=""
+      title=""
+      linkedinLink=""
+    />
+  </div>
+  
+  <p class="mt-12 text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+    Estos comentarios serán extraídos de la sección de Recomendaciones de mi perfil profesional en LinkedIn, garantizando su autenticidad.
+  </p>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto" class="py-24 text-center">
+  <h2 class="text-3xl font-bold mb-6">Contacto</h2>
+  
+  <p class="mb-10 max-w-2xl mx-auto text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+    ¿Tienes una idea, una oportunidad de trabajo o un desafío tecnológico? 
+    Estoy disponible para discutir cómo mis habilidades pueden añadir valor a tu equipo o proyecto. 
+    ¡Déjame un mensaje y te responderé a la brevedad!
+  </p>
+
+  <div class="max-w-xl mx-auto">
+    <ContactForm />
+  </div>
+
+  <a 
+    href="https://wa.me/5493512125597" 
+    target="_blank" 
+    class="fixed bottom-6 right-6 p-5 bg-green-500 text-white rounded-full 
+           shadow-2xl hover:bg-green-600 transition duration-300 z-50 transform hover:scale-110"
+    aria-label="Contactar por WhatsApp"
+  >
+    <i class="fab fa-whatsapp text-3xl"></i>
+  </a>
+</section>
+</Layout>
+
+<style>
+  .animate-fade-in {
+    animation: fadeIn 1s ease-out;
+  }
+  .animate-fade-in-delay {
+    animation: fadeIn 1s ease-out 0.3s forwards;
+    opacity: 0;
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

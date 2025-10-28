@@ -1,0 +1,37 @@
+
+---
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import SEO from "../components/SEO.astro";
+---
+
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <SEO
+      title="Juan Pablo Medina | Analista Funcional & Backend Developer"
+      description="Portfolio profesional de Juan Pablo Medina: proyectos de backend, análisis funcional y desarrollo de sistemas robustos con Clean Architecture y buenas prácticas de software."
+      keywords="Backend, Analista Funcional, C#, .NET, SQL Server, Node.js, Java, MySQL, Clean Architecture, Desarrollo de Software, Portfolio"
+      url="https://tu-portfolio.netlify.app"
+      image="/preview.png"
+    />
+    <link rel="icon" href="/favicon.ico" />
+    <link 
+      rel="stylesheet" 
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" 
+      crossorigin="anonymous" 
+      referrerpolicy="no-referrer" 
+    />
+  </head>
+
+  <body class="bg-white text-gray-800 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-500">
+    <Header />
+    <main class="max-w-6xl mx-auto px-4 pt-24">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
+

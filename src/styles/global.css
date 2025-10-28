@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+
+/* scroll suave */
+html {
+  scroll-behavior: smooth;
+}
+
+/* src/styles/global.css */
+
+/* Aplica un margen superior a todos los elementos que son destino de un anclaje (#id) */
+/* La medida debe ser igual o mayor a la altura de tu barra de navegación fija (aprox. 5rem o 80px) */

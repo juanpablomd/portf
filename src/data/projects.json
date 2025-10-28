@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "Sistema de Turnos Clínicos",
+    "description": "Aplicación web en ASP.NET MVC con Entity Framework y SQL Server.",
+    "tech": ["C#", ".NET", "SQL Server", "Swagger"],
+    "image": "/images/turnos.jpg",
+    "repo": "https://github.com/juanpablomedina/turnos-clinicos",
+    "doc": "/docs/TurnosClinicos.pdf"
+  },
+  {
+    "id": 2,
+    "name": "Gestor de Ventas",
+    "description": "API REST con .NET y persistencia en JSON, conectada a un front en JavaScript.",
+    "tech": [".NET", "Express", "Node.js"],
+    "image": "/images/ventas.jpg",
+    "repo": "https://github.com/juanpablomedina/gestor-ventas",
+    "doc": "/docs/GestorVentas.pdf"
+  }
+]

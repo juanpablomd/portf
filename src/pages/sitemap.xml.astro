@@ -1,0 +1,18 @@
+---
+const pages = [
+  { url: "/", priority: 1.0 },
+  { url: "/proyectos", priority: 0.9 },
+  { url: "/sobre-mi", priority: 0.8 },
+  { url: "/contacto", priority: 0.7 },
+];
+---
+
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  {pages.map(page => (
+    <url>
+      <loc>https://tu-portfolio.netlify.app{page.url}</loc>
+      <priority>{page.priority}</priority>
+    </url>
+  ))}
+</urlset>
