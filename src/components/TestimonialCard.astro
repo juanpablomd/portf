@@ -1,37 +1,110 @@
 ---
-// src/components/TestimonialCard.astro
-// Definición de las propiedades (props) que recibirá el componente
-interface Props {
-    quote: string;
-    name: string;
-    title: string;
-    linkedinLink: string; // Usaremos un solo enlace que apunta a tu sección de recomendaciones
-}
-
+// Bloque Frontmatter: Usando JavaScript puro
 const { quote, name, title, linkedinLink } = Astro.props;
+
+// Límite de caracteres
+const CHARACTER_LIMIT = 250; 
+const isLong = quote.length > CHARACTER_LIMIT;
+
+// Creamos los textos
+const shortQuote = isLong ? quote.slice(0, CHARACTER_LIMIT) + "..." : quote;
+const fullQuoteText = quote;
+
+// ID ÚNICO
+const uniqueCardId = `card-${name.replace(/\s+/g, '-')}`;
 ---
 
-<div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 hover:shadow-xl transition duration-300 h-full flex flex-col justify-between">
-    <div>
-        <i class="fas fa-quote-left text-blue-600 text-xl mb-4"></i>
-        <p class="text-gray-700 dark:text-gray-300 italic mb-4 text-left grow">
-            "{quote}"
-        </p>
-    </div>
-    
-    <div class="flex items-center justify-start mt-4">
-        <div class="ml-0 text-left">
-            <p class="font-semibold text-gray-800 dark:text-white">{name}</p>
-            <p class="text-sm text-gray-500 dark:text-gray-400">{title}</p>
-            
-            <a 
-                href={linkedinLink} 
-                target="_blank" 
-                class="text-xs text-blue-500 hover:text-blue-600 font-semibold flex items-center mt-1"
-                aria-label={`Ver recomendación de ${name} en LinkedIn`}
-            >
-                <i class="fab fa-linkedin mr-1"></i> Ver en LinkedIn
-            </a>
+{/* CLAVE: Usamos el Fragmento de Astro para envolver TODOS los elementos. */}
+<>
+    {/* CLAVE: ELIMINADA CLASE 'h-full'. Ahora la altura es 'auto' por defecto (flex flex-col es suficiente) */}
+    <div id={uniqueCardId} class="testimonial-card bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 hover:shadow-xl transition duration-300 flex flex-col justify-between">
+        <div class="testimonial-content">
+            <i class="fas fa-quote-left text-blue-600 text-xl mb-4"></i>
+
+            <p class="text-gray-700 dark:text-gray-300 italic mb-4 text-left grow leading-relaxed">
+                "
+                <span class="short-text" class:list={[{'hidden': !isLong && quote.length > 0}]}>
+                    {shortQuote}
+                </span>
+                
+                <span class="full-text" class:list={[{'hidden': isLong}]}>
+                    {fullQuoteText}
+                </span>
+                "
+            </p>
+
+            {isLong && (
+                <button class="toggle-btn text-blue-600 font-semibold hover:underline text-sm transition" data-target={uniqueCardId}>
+                    Leer más
+                </button>
+            )}
+        </div>
+
+        <div class="flex items-center justify-start mt-4">
+            <div class="ml-0 text-left">
+                <p class="font-semibold text-gray-800 dark:text-white">{name}</p>
+                <p class="text-sm text-gray-500 dark:text-gray-400">{title}</p>
+                <a
+                    href={linkedinLink}
+                    target="_blank"
+                    class="text-xs text-blue-500 hover:text-blue-600 font-semibold flex items-center mt-1"
+                    aria-label={`Ver recomendación de ${name} en LinkedIn`}
+                >
+                    <i class="fab fa-linkedin mr-1"></i> Ver en LinkedIn
+                </a>
+            </div>
         </div>
     </div>
-</div>
+
+    <script is:inline>
+        // Función central que adjunta los listeners
+        function setupToggleButtons() {
+            document.querySelectorAll(".toggle-btn").forEach(btnElement => {
+                const btn = btnElement;
+                const cardId = btn.dataset.target;
+
+                if (cardId) {
+                    const card = document.getElementById(cardId);
+                    if (card) {
+                        const shortText = card.querySelector(".short-text");
+                        const fullText = card.querySelector(".full-text");
+                        
+                        // Solo adjuntar si el listener no ha sido adjuntado previamente (para View Transitions)
+                        if (shortText && fullText && !btn.hasAttribute('data-listener-attached')) {
+                            btn.setAttribute('data-listener-attached', 'true');
+
+                            btn.addEventListener("click", () => {
+                                const isExpanded = !fullText.classList.contains("hidden");
+                                if (isExpanded) {
+                                    // Acción: Contraer
+                                    fullText.classList.add("hidden");
+                                    shortText.classList.remove("hidden");
+                                    btn.textContent = "Leer más";
+                                } else {
+                                    // Acción: Expandir
+                                    shortText.classList.add("hidden");
+                                    fullText.classList.remove("hidden");
+                                    btn.textContent = "Leer menos";
+                                }
+                            });
+                        }
+                    }
+                }
+            });
+        }
+
+        // Ejecutar al cargar la página inicialmente y después de transiciones
+        setupToggleButtons();
+        document.addEventListener('astro:page-load', setupToggleButtons);
+    </script>
+
+    <style>
+        .full-text,
+        .short-text {
+            transition: all 0.3s ease;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</>
